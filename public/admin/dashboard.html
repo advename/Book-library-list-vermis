@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/css-reset.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Dashboard - Vermis</title>
+</head>
+
+<body id="dashboard">
+    <main>
+        <h1>DASHBOARD</h1>
+        <a href="/logout">Logout</a>
+        <form action="#" onsubmit="return false;">
+            <h3>Add a new book</h3>
+            <input type="text" name="author" required="" placeholder="Author">
+            <input type="text" name="title"  placeholder="Book Title">
+            <input type="text" name="publisher" required="" placeholder="Published">
+            <input type="text" name="language" required="" placeholder="Language">
+            <input type="number" name="pages" required="" placeholder="Pages">
+            <input type="number" name="year" required="" placeholder="Year of publication">
+            
+            <input type="submit" name="addBook" value="Add Book">
+            <div class="added">
+                <h3>Book added &#x2713;</h3>
+            </div>
+        </form>
+    </main>
+
+    <script src="../js/dashboard.js"></script>
+</body>
+</html>
