@@ -5,7 +5,7 @@ let removeButton; //Used to remove books
 // ###########################
 const table = document.querySelector("table");
 
-fetch("/admin/get-books").then(result => result.json()).then(data => displayBooks(data));
+fetch("/get-books").then(result => result.json()).then(data => displayBooks(data));
 
 function displayBooks(data) {
     data.books.forEach(item => {
@@ -138,3 +138,8 @@ function addBookToTable(item) {
     tree.className = item._id;
     table.appendChild(tree);
 }
+
+
+// ###########################
+// LOGOUT
+// ###########################
