@@ -1,26 +1,19 @@
 const Book = require("../models/book.js")
 const mongoose = require("mongoose");
-const express = require("express"); //Route and app handler
 
 module.exports = function dashboardRoutes(app) {
 
-
+  // Check if user is logged in based on session to access /admin
   app.get("/admin/*", validateUser, function(req, res, next) {
     console.log("Validated");
     next();
   })
 
+  // Get all books
   app.get("/get-books", function(req, res) {
-    Book.find({}, function(err, data) {
-      if (err) {
-        console.log(err);
-        res.status(500).send({
-          status: false,
-          msg: "Error: " + err
-        });
-      } else {
-        res.status(200).send({status: true, msg: "Books on the way!", books: data});
-      }
+    Book.find().collation({locale: "simple"}).sort({author: 1}).then(function(data) {
+      res.status(200).send({status: true, msg: "Books on the way!", books: data});
+
     })
   })
 
@@ -51,6 +44,7 @@ module.exports = function dashboardRoutes(app) {
     }
   });
 
+//Remove book
   app.delete("/admin/remove-book", function(req, res) {
     Book.findOneAndRemove({
       _id: req.body.id
@@ -68,8 +62,7 @@ module.exports = function dashboardRoutes(app) {
 
   });
 
-  //logout
-
+  //Logout from session
   app.get("/logout", function(req, res) {
     req.session.destroy(function(err) {
       if (err) {
@@ -85,6 +78,7 @@ module.exports = function dashboardRoutes(app) {
     })
   })
 
+  //Validate user based on session key
   function validateUser(req, res, next) {
     console.log(req.session.email)
     if (req.session.email !== undefined) {

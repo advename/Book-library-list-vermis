@@ -35,7 +35,6 @@ function addBookToTable(item) {
     tree.appendChild(language);
     tree.appendChild(pages);
     tree.appendChild(year);
-    tree.innerHTML += "<td class='remove-book'>remove</td>";
     tree.className = item._id;
     table.appendChild(tree);
 }

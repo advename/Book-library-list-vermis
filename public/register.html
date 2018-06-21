@@ -6,25 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/css-reset.css">
     <link rel="stylesheet" href="../css/style.css">
-    <title>Login - Vermis</title>
+    <title>Register - Vermis</title>
 </head>
 
-<body id="login">
+<body id="register">
     <main>
-        <form class="login" action="#" onsubmit="return false;">
-            <h3>Login</h3>
+        <form class="register" action="#" onsubmit="return false;">
+            <h3>Create new Admin Account</h3>
             <input type="email" name="email" required="" placeholder="Email">
             <input type="password" name="password" placeholder="Password">
+            <input type="password" name="passwordConf" placeholder="Confirm Password">
 
-            <input type="submit" name="login" value="Login">
-            <div>
-                <a href="/register.html">Create a new Account</a>
-            </div>
+            <input type="submit" name="register" value="Register">
+
         </form>
     </main>
+    
 
-
-    <script src="./js/login.js"></script>
+    <script src="./js/register.js"></script>
 </body>
 
 </html>

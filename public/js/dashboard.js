@@ -42,10 +42,10 @@ function addBook() {
             "Content-Type": "application/json"
         },
         body: JSON.stringify(newBook)
-    }).then(result => result.json()).then(result => checkAddStatus(result,newBook));
+    }).then(result => result.json()).then(result => checkAddStatus(result,newBook, inputs));
 }
 
-function checkAddStatus(result,newBook) {
+function checkAddStatus(result,newBook, inputs) {
     if (result.status === true) {
         addBookToTable(newBook);
         message.innerHTML = "Book added &#x2713;";
@@ -54,6 +54,9 @@ function checkAddStatus(result,newBook) {
             message.style.removeProperty("opacity");
         }, 3000)
         updateRemoveButtons();
+        inputs.forEach(input =>{
+            input.value = "";
+        })
     } else {
         message.innerHTML = "Error, book not saved";
         message.style.opacity = "1";
